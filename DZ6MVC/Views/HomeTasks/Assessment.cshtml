@@ -1,0 +1,44 @@
+﻿@model DZ6MVC.AssessmentStudent
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, AuthoringTagHelpers
+
+
+    <form asp-action="Assessment">
+        <div class="form-horizontal">
+            <h2>Assessment</h2>
+            @Html.HiddenFor(m => Model.HomeTaskId)
+            
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            Students Name
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (var i = 0; i < Model.HomeTaskStudents.Count; i++)
+                    {
+                        <tr>
+                            <td>@Model.HomeTaskStudents[i].StudentName</td>
+                            <td>
+                                @Html.CheckBoxFor(m => Model.HomeTaskStudents[i].IsComplete)
+                            </td>
+                            @Html.HiddenFor(m => Model.HomeTaskStudents[i].StudentId)
+                            @Html.HiddenFor(m => Model.HomeTaskStudents[i].StudentName)
+                            @Html.HiddenFor(m => Model.HomeTaskStudents[i].HomeTaskAssessmentId)
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <div class="form-group">
+                <div class="col-md-offset-1 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+            </div>
+</form>
