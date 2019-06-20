@@ -15,8 +15,6 @@ namespace DZ6MVC
 
         public DateTime EndDate { get; set; }
 
-        public int PassCredits { get; set; }
-
         public List<Lecturers> Lecturers { get; set; }
     }
 

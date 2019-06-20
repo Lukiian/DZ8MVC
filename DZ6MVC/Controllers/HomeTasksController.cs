@@ -69,11 +69,11 @@ namespace DZ6MVC.Controllers
                 return View(homeTask);
             }
 
-            var homeTask1 = repository.GetHomeTaskById(homeTask.Id);
+            var homeTaskSelected = repository.GetHomeTaskById(homeTask.Id);
 
             var routeValueDictionary = new RouteValueDictionary();
             repository.UpdateHomeTask(homeTask);
-            routeValueDictionary.Add("id", homeTask1.Course.Id);
+            routeValueDictionary.Add("id", homeTaskSelected.Course.Id);
             return RedirectToAction("Edit", "Courses", routeValueDictionary);
         }
 
@@ -92,14 +92,14 @@ namespace DZ6MVC.Controllers
                 };
             if (homeTask1.HomeTaskAssessments.Any())
             {
-                foreach (var homeTaskHomeTaskAssessment in repository.GetHomeTaskAssessmentsByHomeTaskId(id))
+                foreach (var homeTaskAssessment in repository.GetHomeTaskAssessmentsByHomeTaskId(id))
                 {
                     assessmentViewModel.HomeTaskStudents.Add(new AssessmentStudent_Student()
                     {
-                        StudentName = homeTaskHomeTaskAssessment.Student.Name,
-                        StudentId = homeTaskHomeTaskAssessment.Student.Id,
-                        IsComplete = homeTaskHomeTaskAssessment.IsComplete,
-                        HomeTaskAssessmentId = homeTaskHomeTaskAssessment.Id
+                        StudentName = homeTaskAssessment.Student.Name,
+                        StudentId = homeTaskAssessment.Student.Id,
+                        IsComplete = homeTaskAssessment.IsComplete,
+                        HomeTaskAssessmentId = homeTaskAssessment.Id
                     });
                 }
 

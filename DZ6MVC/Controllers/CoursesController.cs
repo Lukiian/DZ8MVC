@@ -72,14 +72,14 @@ namespace DZ6MVC.Controllers
         {
             var students = repository.GetAllStudents();
             var course = repository.GetCourse(Id);
-            CourseStudent model = new CourseStudent();
-
-            model.Id = Id;
-            model.EndDate = course.EndDate;
-            model.Name = course.Name;
-            model.StartDate = course.StartDate;
-            model.PassCredits = course.PassCredits;
-            model.Students = new List<CourseStudent_Student>();
+            CourseStudent model = new CourseStudent
+            {
+                Id = Id,
+                EndDate = course.EndDate,
+                Name = course.Name,
+                StartDate = course.StartDate,
+                Students = new List<CourseStudent_Student>()
+            };
 
             foreach (var student in students)
             {
@@ -103,14 +103,14 @@ namespace DZ6MVC.Controllers
         {
             var lecturers = repository.GetAllLecturers();
             var course = repository.GetCourse(id);
-            CourseLecturer model = new CourseLecturer();
-
-            model.Id = id;
-            model.EndDate = course.EndDate;
-            model.Name = course.Name;
-            model.StartDate = course.StartDate;
-            model.PassCredits = course.PassCredits;
-            model.Lecturers = new List<Lecturers>();
+            CourseLecturer model = new CourseLecturer
+            {
+                Id = id,
+                EndDate = course.EndDate,
+                Name = course.Name,
+                StartDate = course.StartDate,
+                Lecturers = new List<Lecturers>()
+            };
 
             foreach (var lecturer in lecturers)
             {
